@@ -3,7 +3,7 @@ class JobsController < ApplicationController
 
   def show
     jobid = params[:jobid]
-    url = "https://torre.co/api/suite/opportunities/#{jobid}"
+    url = url = ENV['TORRE_API_JOB_URL'] + jobid
     response = RestClient.get(url)
     render json: response.body
   end

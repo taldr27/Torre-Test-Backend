@@ -5,7 +5,7 @@ class UsersController < ApplicationController
 
   def show
     username = params[:username]
-    url = "https://torre.bio/api/bios/#{username}"
+    url = ENV['TORRE_API_USER_URL'] + username
     response = RestClient.get(url)
     render json: response.body
   end
